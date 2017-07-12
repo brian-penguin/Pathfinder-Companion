@@ -17,3 +17,7 @@
 /yarn-error.log
 
 .byebug_history
+
+*.sw*
+.DS_Store
+tags

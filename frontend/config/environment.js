@@ -3,7 +3,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'client',
+    modulePrefix: 'frontend',
     environment,
     rootURL: '/',
     locationType: 'auto',
