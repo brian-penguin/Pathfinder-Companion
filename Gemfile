@@ -9,7 +9,7 @@ end
 
 gem 'rails', '~> 5.1.2'
 
-gem 'ember-cli-rails'
+gem 'ember-cli-rails', '~> 0.8.0'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'redis', '~> 3.0'
