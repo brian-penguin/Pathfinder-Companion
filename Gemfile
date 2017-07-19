@@ -16,6 +16,7 @@ gem 'redis', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'devise'
+gem 'simple_token_authentication', '~> 1.15.1'
 
 group :development, :test do
   gem 'pry-byebug'
