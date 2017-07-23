@@ -1,24 +1,10 @@
-# README
+# Pathfinders Companion
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
+* Ruby version 2.4.1
 
 * System dependencies
+- Postgres
 
-* Configuration
+The goal of this project is to put together a useable resource for smoothing the game of pathfinder along. Keeping track of initiative, gold, searchable spells, and magic item generation for example
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
