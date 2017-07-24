@@ -1,5 +1,4 @@
 ruby '2.4.1'
-
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -10,12 +9,10 @@ end
 
 gem 'rails', '~> 5.1.2'
 
-gem 'jbuilder', '~> 2.5'
+gem 'ember-cli-rails', '~> 0.8.0'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'redis', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
-gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
