@@ -17,10 +17,12 @@ gem 'redis', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'smarter_csv', '~> 1.1.4'
 
 group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails'
+  gem 'pry-rails'
 end
 
 group :development do
