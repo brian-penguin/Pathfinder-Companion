@@ -44,6 +44,11 @@ csv_spells.each do |spell|
     name: spell[:name],
     school: spell[:school],
     casting_time: spell[:casting_time],
+
+    range: spell[:range],
+    duration: spell[:duration],
+    targets: spell[:targets],
+
     spell_resistance: spell[:spell_resistence], # the csv has a typo lol
     saving_throw: spell[:saving_throw],
     dismissible: boolean_check(spell[:dismissible]),

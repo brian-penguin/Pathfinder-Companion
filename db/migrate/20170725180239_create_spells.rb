@@ -5,6 +5,10 @@ class CreateSpells < ActiveRecord::Migration[5.1]
       t.string :school, null: false
       t.string :casting_time, null: false      
 
+      t.string :range
+      t.string :duration
+      t.string :targets
+
       t.string :spell_resistance
       t.string :saving_throw
       t.boolean :dismissible, default: false
