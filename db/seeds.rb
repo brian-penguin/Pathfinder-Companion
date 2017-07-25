@@ -54,7 +54,6 @@ csv_spells.each do |spell|
     somatic:  boolean_check(spell[:somatic]),
     material: boolean_check(spell[:material]),
     focus:    boolean_check(spell[:focus]),
-    link: spell[:linktext],
     spell_requirements: build_requirements(spell)
   )
 end

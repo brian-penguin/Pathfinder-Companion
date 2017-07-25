@@ -17,8 +17,6 @@ class CreateSpells < ActiveRecord::Migration[5.1]
       t.boolean :material, default: false
       t.boolean :focus, default: false
 
-      t.string :link
-
       t.timestamps
     end
   end
