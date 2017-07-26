@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20170725213602) do
     t.string "name", null: false
     t.string "school", null: false
     t.string "casting_time", null: false
+    t.string "range"
+    t.string "duration"
+    t.string "targets"
     t.string "spell_resistance"
     t.string "saving_throw"
     t.boolean "dismissible", default: false
@@ -29,10 +32,9 @@ ActiveRecord::Schema.define(version: 20170725213602) do
     t.boolean "somatic", default: false
     t.boolean "material", default: false
     t.boolean "focus", default: false
-    t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.jsonb "spell_requirements"
+    t.jsonb "class_requirements"
   end
 
 end

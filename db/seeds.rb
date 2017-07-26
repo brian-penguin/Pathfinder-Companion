@@ -1,14 +1,20 @@
 require "csv"
 
 def boolean_check(value)
-  return true if value == 1 else false
+  if value == 1
+    return true
+  else
+    return false
+  end
 end
 
 def null_check(value)
-  return value if value != "NULL" else nil
+  if value != "NULL"
+    return value
+  end
 end
 
-def build_requirements(spell)
+def build_class_requirements(spell)
   return {
     alchemist: null_check(spell[:alchemist]),
     antipaladin: null_check(spell[:antipaladin]),
@@ -44,11 +50,9 @@ csv_spells.each do |spell|
     name: spell[:name],
     school: spell[:school],
     casting_time: spell[:casting_time],
-
     range: spell[:range],
     duration: spell[:duration],
     targets: spell[:targets],
-
     spell_resistance: spell[:spell_resistence], # the csv has a typo lol
     saving_throw: spell[:saving_throw],
     dismissible: boolean_check(spell[:dismissible]),
@@ -59,7 +63,7 @@ csv_spells.each do |spell|
     somatic:  boolean_check(spell[:somatic]),
     material: boolean_check(spell[:material]),
     focus:    boolean_check(spell[:focus]),
-    spell_requirements: build_requirements(spell)
+    class_requirements: build_class_requirements(spell)
   )
 end
 
