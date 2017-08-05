@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725213602) do
+ActiveRecord::Schema.define(version: 20170804234854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,13 +28,11 @@ ActiveRecord::Schema.define(version: 20170725213602) do
     t.string "description", null: false
     t.string "description_short"
     t.string "source"
-    t.boolean "verbal", default: false
-    t.boolean "somatic", default: false
-    t.boolean "material", default: false
-    t.boolean "focus", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "class_requirements"
+    t.jsonb "spell_requirements"
+    t.string "descriptor"
   end
 
 end

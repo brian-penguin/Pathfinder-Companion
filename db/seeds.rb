@@ -43,12 +43,22 @@ def build_class_requirements(spell)
   }
 end
 
+def build_spell_requirements(spell)
+  return {
+    verbal:   boolean_check(spell[:verbal]),
+    somatic:  boolean_check(spell[:somatic]),
+    material: boolean_check(spell[:material]),
+    focus:    boolean_check(spell[:focus])
+  }
+end
+
 csv_spells = SmarterCSV.process('spell_list-01JUL2017.csv')
 
 csv_spells.each do |spell|
   Spell.create(
-    name: spell[:name],
+    name: spell[:name].downcase,
     school: spell[:school],
+    descriptor: spell[:descriptor],
     casting_time: spell[:casting_time],
     range: spell[:range],
     duration: spell[:duration],
@@ -59,12 +69,9 @@ csv_spells.each do |spell|
     description: spell[:description],
     description_short: spell[:short_description],
     source: spell[:source],
-    verbal:   boolean_check(spell[:verbal]),
-    somatic:  boolean_check(spell[:somatic]),
-    material: boolean_check(spell[:material]),
-    focus:    boolean_check(spell[:focus]),
+    spell_requirements: build_spell_requirements(spell),
     class_requirements: build_class_requirements(spell)
   )
 end
 
-puts "#{csv_spells.length} spells added."
+puts "#{Spell.count} spells added."
