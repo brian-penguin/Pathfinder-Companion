@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170804234854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "spells", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "school", null: false
+    t.string "casting_time", null: false
+    t.string "range"
+    t.string "duration"
+    t.string "targets"
+    t.string "spell_resistance"
+    t.string "saving_throw"
+    t.boolean "dismissible", default: false
+    t.string "description", null: false
+    t.string "description_short"
+    t.string "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.jsonb "class_requirements"
+    t.jsonb "spell_requirements"
+    t.string "descriptor"
+  end
 
 end
