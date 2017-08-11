@@ -1,0 +1,11 @@
+<h1>These are all the spells!</h1>
+
+<%= render "search_and_filter" %>
+
+<ul>
+  <% @spells.each do |spell| %>
+    <li><%= spell.name %></li>
+  <% end %>
+</ul>
+
+<%= paginate @spells %>

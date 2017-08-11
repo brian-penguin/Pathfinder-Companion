@@ -18,11 +18,15 @@ gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'smarter_csv', '~> 1.1.4'
+gem 'kaminari'
 
 group :development, :test do
+  gem 'capybara'
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'pry-rails'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :development do
