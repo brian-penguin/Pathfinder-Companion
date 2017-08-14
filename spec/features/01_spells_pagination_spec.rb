@@ -20,4 +20,9 @@ RSpec.describe "spells index page paginates all spells" do
     expect(page).to_not have_content(Spell.all.first.name)
     expect(page).to have_content(Spell.all.last.name)
   end
+
+  scenario "spells index links to each individual spell" do
+    visit "/spells"
+    expect(page).to have_link("#{Spell.first.name}")
+  end
 end

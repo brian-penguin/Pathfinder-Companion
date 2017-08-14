@@ -38,5 +38,17 @@ class Spell < ApplicationRecord
       end
     end    
   end
+
+  def list_spell_requirements
+    display = ""
+
+    self.spell_requirements.each do |requirement, value|
+      if value
+        display << requirement[0]
+      end
+    end
+    
+    return display.upcase
+  end
     
 end

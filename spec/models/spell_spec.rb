@@ -105,4 +105,56 @@ RSpec.describe "Spell creation", type: :model do
     expect(bad_spell.save).to eq false
   end
 
+  it "#list_spell_requirements returns correct initials" do
+    good_spell = Spell.new(
+      name: "Abra Kadabra",
+      school: "conjuration",
+      descriptor: "mind",
+      casting_time: "1 round",
+      range: "10 ft",
+      duration: "2 seconds",
+      targets: "living creature",
+      spell_resistance: "no",
+      saving_throw: "none",
+      dismissible: false,
+      description: "Gripped by the caster's foolish magic attempt, the target laughs as a swift action on their next turn.",
+      description_short: "Target laughs as a swift action next round",
+      source: "Earth",
+      spell_requirements: {
+        verbal:   true,
+        somatic:  true,
+        material: false,
+        focus:    false
+      },
+      class_requirements: {
+        alchemist: 0,
+        antipaladin: 0,
+        bard: 0,
+        bloodrager: nil,
+        cleric: 0,
+        druid: 0,
+        hunter: nil,
+        inquisitor: 0,
+        investigator: 0,
+        magus: 0,
+        medium: 0,
+        mesmerist: nil,
+        occultist: 0,
+        oracle: 0,
+        paladin: nil,
+        psychic: nil,
+        ranger: nil,
+        shaman: 0,
+        skald: 0,
+        sorcerer: 0,
+        spiritualist: nil,
+        summoner: 0,
+        witch: 0,
+        wizard: nil
+      }
+    )
+
+    expect(good_spell.list_spell_requirements).to eq("VS")
+  end
+
 end
