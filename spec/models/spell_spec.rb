@@ -154,7 +154,7 @@ RSpec.describe "Spell creation", type: :model do
       }
     )
 
-    expect(good_spell.list_spell_requirements).to eq("VS")
+    expect(good_spell.list_spell_requirements).to eq("v, s")
   end
 
 end

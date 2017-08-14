@@ -2,16 +2,43 @@ require "rails_helper"
 
 RSpec.describe "spells show page displays spell information" do
   before(:all) do
-    51.times do
-      FactoryGirl.create(:spell)
-    end    
+    @spell = FactoryGirl.create(
+      :spell, spell_requirements: {
+        verbal:   true,
+        somatic:  true,
+        material: false,
+        focus:    true
+      }
+    )
   end
 
-  pending "spell show page links back to index"
+  scenario "spell show page links back to index" do
+    visit "/spells/#{@spell.id}"
+    expect(page).to have_link("Back to Spells")
+  end
 
-  pending "spell show page lists relevant spell information"
+  scenario "spell show page displays relevant spell information" do
+    visit "/spells/#{@spell.id}"
 
-  pending "spell show page displays spell requirements"
+    expect(page).to have_content(@spell.name)
+    expect(page).to have_content(@spell.school)
+    expect(page).to have_content(@spell.source)
+
+    expect(page).to have_content(@spell.casting_time)
+    expect(page).to have_content(@spell.range)
+    expect(page).to have_content(@spell.duration)
+    expect(page).to have_content(@spell.targets)
+    expect(page).to have_content(@spell.spell_resistance)
+    expect(page).to have_content(@spell.saving_throw)
+    expect(page).to have_content(@spell.dismissible)
+
+    expect(page).to have_content(@spell.description)
+  end
+
+  scenario "spell show page displays spell requirements" do
+    visit "/spells/#{@spell.id}"
+    expect(page).to have_content("V, S, F")
+  end
 
   pending "spell show page displays class level requirements"
 

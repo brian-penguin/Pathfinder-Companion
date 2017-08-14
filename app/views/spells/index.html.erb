@@ -2,14 +2,6 @@
 
 <%= render "search_and_filter" %>
 
-<ul>
-  <% @spells.each do |spell| %>
-    <li><%= spell.name %></li>
-  <% end %>
-</ul>
-
-<%= paginate @spells %>
-
 <table id="spellsTable" class="tablesorter">
   <thead>
 
@@ -23,11 +15,13 @@
   <tbody>
     <% @spells.each do |spell| %>
     <tr>
-      <td><%= link_to "#{spell.name}", spell_path(spell) %></td>
-      <td><%= spell.school %></td>
-      <td><%= spell.list_spell_requirements %>
+      <td><%= link_to "#{spell.name.titleize}", spell_path(spell) %></td>
+      <td><%= spell.school.titleize %></td>
+      <td><%= spell.list_spell_requirements.upcase %>
       <td><%= spell.source %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @spells %>

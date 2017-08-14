@@ -41,14 +41,19 @@ class Spell < ApplicationRecord
 
   def list_spell_requirements
     display = ""
-
     self.spell_requirements.each do |requirement, value|
       if value
         display << requirement[0]
       end
     end
-    
-    return display.upcase
+
+    if display.include?("f")
+      display = display.split("").sort.reverse!
+    else
+      display = display.split("")
+    end
+
+    return display.join(", ")
   end
     
 end
