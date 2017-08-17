@@ -19,6 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'smarter_csv', '~> 1.1.4'
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'pry-byebug'
   gem 'rspec-rails'
 end

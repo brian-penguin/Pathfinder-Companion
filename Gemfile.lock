@@ -39,6 +39,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (8.0.0)
+    awesome_print (1.8.0)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (9.0.6)
@@ -80,8 +81,6 @@ GEM
     pry-byebug (3.4.2)
       byebug (~> 9.0)
       pry (~> 0.10)
-    pry-rails (0.3.6)
-      pry (>= 0.10.4)
     puma (3.9.1)
     rack (2.0.3)
     rack-test (0.6.3)
@@ -176,11 +175,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)
   pry-byebug
-  pry-rails
   puma (~> 3.7)
   rails (~> 5.1.2)
   redis (~> 3.0)
@@ -197,4 +196,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.2
+   1.15.3
