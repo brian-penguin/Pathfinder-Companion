@@ -7,7 +7,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 gem 'rails', '~> 5.1.2'
 
 gem 'jbuilder', '~> 2.5'
@@ -22,7 +21,6 @@ gem 'smarter_csv', '~> 1.1.4'
 group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails'
-  gem 'pry-rails'
 end
 
 group :development do
