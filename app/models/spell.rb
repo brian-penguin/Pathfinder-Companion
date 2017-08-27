@@ -1,14 +1,14 @@
 class Spell < ApplicationRecord
   SCHOOLS = [
-    "abjuration",
-    "conjuration",
-    "divination",
-    "enchantment",
-    "evocation",
-    "illusion",
-    "necromancy",
-    "transmutation",
-    "universal"
+    'abjuration',
+    'conjuration',
+    'divination',
+    'enchantment',
+    'evocation',
+    'illusion',
+    'necromancy',
+    'transmutation',
+    'universal'
   ].freeze
 
   validates :name, presence: true
@@ -25,18 +25,23 @@ class Spell < ApplicationRecord
 
   def validate_spell_requirements
     self.spell_requirements.values.each do |req_value|
-      if req_value != true && req_value != false    
-        errors.add("Spell requirements", "All values for the spell requirements must be true or false.")
+      if req_value != true && req_value != false
+        errors.add(
+          'Spell requirements',
+          'All values for the spell requirements must be true or false.',
+        )
       end
-    end    
+    end
   end
 
   def validate_class_requirements
     self.class_requirements.values.each do |req_value|
       if req_value.class != Integer && req_value != nil
-        errors.add("Class requirements", "All values for the class requirements must be an integer or nil.")
+        errors.add(
+          'requirements',
+          'All values for the class requirements must be an integer or nil.',
+        )
       end
-    end    
+    end
   end
-    
 end

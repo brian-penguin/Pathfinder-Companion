@@ -13,7 +13,7 @@ RSpec.describe "Spell creation", type: :model do
         spell_resistance: "no",
         saving_throw: "none",
         dismissible: false,
-        description: "Gripped by the caster's foolish magic attempt, the target laughs as a swift action on their next turn.",
+        description: "The target laughs as a swift action on their next turn.",
         description_short: "Target laughs as a swift action next round",
         source: "Earth",
         spell_requirements: {
@@ -101,7 +101,7 @@ RSpec.describe "Spell creation", type: :model do
         wizard: nil
       }
     )
-    
+
     expect(bad_spell.save).to eq false
   end
 
