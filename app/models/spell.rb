@@ -11,6 +11,33 @@ class Spell < ApplicationRecord
     "universal"
   ].freeze
 
+  CLASSES = [
+    'alchemist',
+    'antipaladin',
+    'bard',
+    'bloodrager',
+    'cleric',
+    'druid',
+    'hunter',
+    'inquisitor',
+    'investigator',
+    'magus',
+    'medium',
+    'mesmerist',
+    'occultist',
+    'oracle',
+    'paladin',
+    'psychic',
+    'ranger',
+    'shaman',
+    'skald',
+    'sorcerer',
+    'spiritualist',
+    'summoner',
+    'witch',
+    'wizard'
+  ].freeze
+
   validates :name, presence: true
   validates :school, inclusion: { in: SCHOOLS }
   validates :casting_time, presence: true
@@ -25,10 +52,10 @@ class Spell < ApplicationRecord
 
   def validate_spell_requirements
     self.spell_requirements.values.each do |req_value|
-      if req_value != true && req_value != false    
+      if req_value != true && req_value != false
         errors.add("Spell requirements", "All values for the spell requirements must be true or false.")
       end
-    end    
+    end
   end
 
   def validate_class_requirements
@@ -36,7 +63,7 @@ class Spell < ApplicationRecord
       if req_value.class != Integer && req_value != nil
         errors.add("Class requirements", "All values for the class requirements must be an integer or nil.")
       end
-    end    
+    end
   end
 
   def list_spell_requirements
@@ -55,5 +82,5 @@ class Spell < ApplicationRecord
 
     return display.join(", ")
   end
-    
+
 end

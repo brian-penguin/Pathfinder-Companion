@@ -7,7 +7,7 @@ RSpec.describe "spell index can be filtered" do
     end
   end
 
-  let(:level_1_paladin_spell) do
+  let!(:level_1_paladin_spell) do
     FactoryGirl.create(:spell, name: "Level 1 Paladin Spell", class_requirements:
       {
         alchemist: nil,
@@ -39,7 +39,6 @@ RSpec.describe "spell index can be filtered" do
   end
 
   it "index can be filtered to show all spells of a class" do
-    level_1_paladin_spell
     params = {class_filter: :paladin}
     spell_query = FilterBuilder.new({klass: Spell}, params)
 
@@ -86,7 +85,5 @@ RSpec.describe "spell index can be filtered" do
     expect(spell_query.results.include?(level_2_paladin_spell)).to eq true
     expect(spell_query.results.include?(level_1_paladin_spell)).to eq false
   end
-
-  pending "index can be filtered to show spells of a specific level"
 
 end

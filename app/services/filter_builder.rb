@@ -1,7 +1,3 @@
-# FilterBuilder.new(klass: Spell, params)
-# then the class calls the method based on the type of object being filtered
-# and returns the activerecord query to be displayed
-
 class FilterBuilder
   attr_accessor :klass, :params, :results
 
@@ -27,10 +23,9 @@ class FilterBuilder
   end
 
 end
-
 # ActiveRecord Query for all spells of a class
-# Spell.find_by_sql("SELECT \"spells\".* FROM spells WHERE NOT (class_requirements @> '{\"paladin\":null}');")
+  # Spell.find_by_sql("SELECT \"spells\".* FROM spells WHERE NOT (class_requirements @> '{\"paladin\":null}');")
   # raw SQL: SELECT "spells".* FROM spells WHERE NOT (class_requirements @> '{"paladin":null}');
 
 # This query is to find all spells of a specific class level, i.e. 3rd level wizard spells
-# Spell.where('class_requirements @> ?', {'wizard' => 3}.to_json)
+  # Spell.where('class_requirements @> ?', {'wizard' => 3}.to_json)
