@@ -22,34 +22,8 @@ RSpec.describe "Spell creation", type: :model do
           material: false,
           focus:    false
         },
-        class_requirements: {
-          alchemist: 0,
-          antipaladin: 0,
-          bard: 0,
-          bloodrager: nil,
-          cleric: 0,
-          druid: 0,
-          hunter: nil,
-          inquisitor: 0,
-          investigator: 0,
-          magus: 0,
-          medium: 0,
-          mesmerist: nil,
-          occultist: 0,
-          oracle: 0,
-          paladin: nil,
-          psychic: nil,
-          ranger: nil,
-          shaman: 0,
-          skald: 0,
-          sorcerer: 0,
-          spiritualist: nil,
-          summoner: 0,
-          witch: 0,
-          wizard: nil
-        }
+        class_requirements: @class_requirements_template
     )
-
     expect(good_spell.save).to eq true
   end
 
@@ -74,34 +48,10 @@ RSpec.describe "Spell creation", type: :model do
         material: false,
         focus:    false
       },
-      class_requirements: {
-        alchemist: 0,
-        antipaladin: "yes",
-        bard: 0,
-        bloodrager: nil,
-        cleric: 0,
-        druid: 0,
-        hunter: nil,
-        inquisitor: 0,
-        investigator: 0,
-        magus: 0,
-        medium: 0,
-        mesmerist: nil,
-        occultist: 0,
-        oracle: 0,
-        paladin: nil,
-        psychic: nil,
-        ranger: nil,
-        shaman: 0,
-        skald: 0,
-        sorcerer: 0,
-        spiritualist: nil,
-        summoner: 0,
-        witch: 0,
-        wizard: nil
-      }
+      class_requirements: @class_requirements_template
     )
-    
+    bad_spell.class_requirements[:bard] = "2"
+
     expect(bad_spell.save).to eq false
   end
 
@@ -126,32 +76,7 @@ RSpec.describe "Spell creation", type: :model do
         material: false,
         focus:    false
       },
-      class_requirements: {
-        alchemist: 0,
-        antipaladin: 0,
-        bard: 0,
-        bloodrager: nil,
-        cleric: 0,
-        druid: 0,
-        hunter: nil,
-        inquisitor: 0,
-        investigator: 0,
-        magus: 0,
-        medium: 0,
-        mesmerist: nil,
-        occultist: 0,
-        oracle: 0,
-        paladin: nil,
-        psychic: nil,
-        ranger: nil,
-        shaman: 0,
-        skald: 0,
-        sorcerer: 0,
-        spiritualist: nil,
-        summoner: 0,
-        witch: 0,
-        wizard: nil
-      }
+      class_requirements: @class_requirements_template
     )
 
     expect(good_spell.list_spell_requirements).to eq("v, s")

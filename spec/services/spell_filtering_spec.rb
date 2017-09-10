@@ -40,7 +40,7 @@ RSpec.describe "spell index can be filtered" do
 
   it "index can be filtered to show all spells of a class" do
     params = {class_filter: :paladin}
-    spell_query = FilterBuilder.new({klass: Spell}, params)
+    spell_query = SpellFilterBuilder.new({klass: Spell}, params)
 
     spell_query.perform
 
@@ -78,7 +78,7 @@ RSpec.describe "spell index can be filtered" do
     )
 
     params = {class_filter: :paladin, level: 2}
-    spell_query = FilterBuilder.new({klass: Spell}, params)
+    spell_query = SpellFilterBuilder.new({klass: Spell}, params)
 
     spell_query.perform
 

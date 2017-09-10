@@ -1,42 +1,42 @@
 class Spell < ApplicationRecord
-  SCHOOLS = [
-    "abjuration",
-    "conjuration",
-    "divination",
-    "enchantment",
-    "evocation",
-    "illusion",
-    "necromancy",
-    "transmutation",
-    "universal"
-  ].freeze
+  SCHOOLS = %w(
+    abjuration
+    conjuration
+    divination
+    enchantment
+    evocation
+    illusion
+    necromancy
+    transmutation
+    universal
+  ).freeze
 
-  CLASSES = [
-    'alchemist',
-    'antipaladin',
-    'bard',
-    'bloodrager',
-    'cleric',
-    'druid',
-    'hunter',
-    'inquisitor',
-    'investigator',
-    'magus',
-    'medium',
-    'mesmerist',
-    'occultist',
-    'oracle',
-    'paladin',
-    'psychic',
-    'ranger',
-    'shaman',
-    'skald',
-    'sorcerer',
-    'spiritualist',
-    'summoner',
-    'witch',
-    'wizard'
-  ].freeze
+  CLASSES = %w(
+    alchemist
+    antipaladin
+    bard
+    bloodrager
+    cleric
+    druid
+    hunter
+    inquisitor
+    investigator
+    magus
+    medium
+    mesmerist
+    occultist
+    oracle
+    paladin
+    psychic
+    ranger
+    shaman
+    skald
+    sorcerer
+    spiritualist
+    summoner
+    witch
+    wizard
+  ).freeze
 
   validates :name, presence: true
   validates :school, inclusion: { in: SCHOOLS }
@@ -68,7 +68,7 @@ class Spell < ApplicationRecord
 
   def list_spell_requirements
     display = ""
-    self.spell_requirements.each do |requirement, value|
+    spell_requirements.each do |requirement, value|
       if value
         display << requirement[0]
       end
