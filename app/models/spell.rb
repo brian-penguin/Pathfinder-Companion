@@ -61,11 +61,14 @@ class Spell < ApplicationRecord
   def validate_class_requirements
     self.class_requirements.values.each do |req_value|
       if req_value.class != Integer && req_value != nil
-        errors.add("Class requirements", "All values for the class requirements must be an integer or nil.")
+        errors.add(
+          'requirements',
+          'All values for the class requirements must be an integer or nil.',
+        )
       end
     end
   end
-
+  
   def list_spell_requirements
     display = ""
     spell_requirements.each do |requirement, value|
