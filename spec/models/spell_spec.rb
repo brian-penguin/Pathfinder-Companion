@@ -22,87 +22,28 @@ RSpec.describe "Spell creation", type: :model do
           material: false,
           focus:    false
         },
-        class_requirements: {
-          alchemist: 0,
-          antipaladin: 0,
-          bard: 0,
-          bloodrager: nil,
-          cleric: 0,
-          druid: 0,
-          hunter: nil,
-          inquisitor: 0,
-          investigator: 0,
-          magus: 0,
-          medium: 0,
-          mesmerist: nil,
-          occultist: 0,
-          oracle: 0,
-          paladin: nil,
-          psychic: nil,
-          ranger: nil,
-          shaman: 0,
-          skald: 0,
-          sorcerer: 0,
-          spiritualist: nil,
-          summoner: 0,
-          witch: 0,
-          wizard: nil
-        }
+        class_requirements: @class_requirements_template
     )
-
     expect(good_spell.save).to eq true
   end
 
   it "spell not created if incorrect attributes provided" do
-    bad_spell = Spell.new(
-      name: "Freeze Bean",
-      school: "freezy",
-      descriptor: "wicked cold",
-      casting_time: "20 minutes",
-      range: "too far",
-      duration: "20 seconds",
-      targets: "living creature",
-      spell_resistance: "no",
-      saving_throw: "none",
-      dismissible: false,
-      description: "You shoot a big cold bean",
-      description_short: "cold. brean.",
-      source: "China",
-      spell_requirements: {
-        verbal:   nil,
-        somatic:  true,
-        material: false,
-        focus:    false
-      },
-      class_requirements: {
-        alchemist: 0,
-        antipaladin: "yes",
-        bard: 0,
-        bloodrager: nil,
-        cleric: 0,
-        druid: 0,
-        hunter: nil,
-        inquisitor: 0,
-        investigator: 0,
-        magus: 0,
-        medium: 0,
-        mesmerist: nil,
-        occultist: 0,
-        oracle: 0,
-        paladin: nil,
-        psychic: nil,
-        ranger: nil,
-        shaman: 0,
-        skald: 0,
-        sorcerer: 0,
-        spiritualist: nil,
-        summoner: 0,
-        witch: 0,
-        wizard: nil
-      }
-    )
+    bad_spell = FactoryGirl.build(:spell)
+    bad_spell.school = 'bad school'
 
     expect(bad_spell.save).to eq false
+  end
+
+  it "#list_spell_requirements returns correct initials" do
+    good_spell = FactoryGirl.build(:spell)
+    good_spell.spell_requirements = {
+      verbal:   true,
+      somatic:  true,
+      material: false,
+      focus:    false
+    }
+
+    expect(good_spell.list_spell_requirements).to eq("v, s")
   end
 
 end

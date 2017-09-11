@@ -1,0 +1,31 @@
+<%= link_to "Back to Spells", spells_path %>
+
+<h1><%= @spell.name.titleize %></h1>
+<ul>
+  <li>School: <%= @spell.school %></li>
+  <li>Source: <%= @spell.source %></li>
+
+  <li>Range: <%= @spell.range %></li>
+  <li>Targets: <%= @spell.targets %></li>
+  <li>Casting Time: <%= @spell.casting_time %></li>
+  <li>Duration: <%= @spell.duration %></li>
+  <li>Dismissible: <%= @spell.dismissible %></li>
+
+  <li>Spell Resistance: <%= @spell.spell_resistance %></li>
+  <li>Saving Throw: <%= @spell.saving_throw %></li>
+  <li>Requirements: <%= @spell.list_spell_requirements.upcase %></li>
+
+  <br>
+  <li>
+    Class Levels:
+    <ul>
+      <% @spell.class_requirements.each do |klass, level| %>
+        <% if level %>
+          <li><%= "#{klass.capitalize}: #{level}" %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </li>
+
+  <li><%= @spell.description %></li>
+</ul>

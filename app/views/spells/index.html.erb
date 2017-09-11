@@ -1,0 +1,27 @@
+<h1>These are all the spells!</h1>
+
+<%= render "search_and_filter" %>
+
+<table id="spellsTable" class="tablesorter">
+  <thead>
+
+    <tr>
+      <th width="250">Spell Name</th>
+      <th width="150">School</th>
+      <th width="50">Components</th>
+      <th width="150">Source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @spells.each do |spell| %>
+    <tr>
+      <td><%= link_to "#{spell.name.titleize}", spell_path(spell) %></td>
+      <td><%= spell.school.titleize %></td>
+      <td><%= spell.list_spell_requirements.upcase %>
+      <td><%= spell.source %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @spells %>

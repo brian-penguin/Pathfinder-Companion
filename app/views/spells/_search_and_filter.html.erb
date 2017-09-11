@@ -1,0 +1,9 @@
+<%# this will have the search bar and filter check boxes %>
+
+<p>Search and filter area</p>
+
+<%= form_tag(spells_path, method: "get") do %>
+  <%= label_tag(:q, "Class:") %>
+  <%= select_tag "class_filter", options_for_select(@class_list) %>
+  <%= submit_tag("Submit") %>
+<% end %>
