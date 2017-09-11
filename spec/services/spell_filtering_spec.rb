@@ -1,12 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "spell index can be filtered" do
-  before(:all) do
-    51.times do
-      FactoryGirl.create(:spell)
-    end
-  end
-
   let!(:level_1_paladin_spell) do
     FactoryGirl.create(:spell, name: "Level 1 Paladin Spell", class_requirements:
       {

@@ -8,7 +8,7 @@
 class FilterBuilder
   attr_accessor :klass, :params, :results
 
-  def initialize(object_type, params = nil)
+  def initialize(object_type, params)
     @klass = object_type[:klass]
     @params = params
     @results = nil

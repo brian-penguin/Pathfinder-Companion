@@ -52,7 +52,7 @@ class Spell < ApplicationRecord
 
   def validate_spell_requirements
     self.spell_requirements.values.each do |req_value|
-      if req_value != true && req_value != false
+      if ![true, false].include?(req_value)
         errors.add("Spell requirements", "All values for the spell requirements must be true or false.")
       end
     end
