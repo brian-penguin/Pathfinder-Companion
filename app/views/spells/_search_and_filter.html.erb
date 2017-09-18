@@ -2,11 +2,11 @@
 
 <p>Search and filter area</p>
 
-<%= form_tag(spells_path, method: "get") do %>
-  <%= label_tag(:term, "Search:") %>
-  <%= text_field_tag :term %>
+<%= form_tag(spells_path, method: :get) do %>
+  <%= label_tag(:search_term, 'Search:') %>
+  <%= text_field_tag :search_term, params[:search_term] %>
   <br>
   <%= label_tag(:q, "Class:") %>
-  <%= select_tag "class_filter", options_for_select(@class_list) %>
-  <%= submit_tag("Submit") %>
+  <%= select_tag 'class_filter', options_for_select(@class_list) %>
+  <%= submit_tag 'Submit', name: nil %>
 <% end %>
