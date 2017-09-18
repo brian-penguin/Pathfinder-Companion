@@ -1,9 +1,8 @@
 class SpellsController < ApplicationController
   def index
     if params[:search_term]
-      @spells = Spell.where('name LIKE ? OR description LIKE ?',
-        "%#{params[:search_term]}%", "%#{params[:search_term]}%").page params[:page]
-
+      spell_query = SpellFilterBuilder.new({ klass: Spell }, params)
+      @spells = spell_query.perform.page params[:page]
     elsif params[:class_filter] && params[:class_filter] != 'Select a class'
       spell_query = SpellFilterBuilder.new({ klass: Spell }, params)
       @spells = Kaminari.paginate_array(spell_query.perform).page(params[:page]).per(50)
