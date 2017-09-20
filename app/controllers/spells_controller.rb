@@ -1,11 +1,6 @@
 class SpellsController < ApplicationController
   def index
-    if params[:class_filter]
-      spell_query = SpellFilterBuilder.new({klass: Spell}, params)
-      @spells = Kaminari.paginate_array(spell_query.perform).page(params[:page]).per(50)
-    else
-      @spells = Spell.all.page params[:page]
-    end
+    @spells = SpellFinder.perform(spells_params)
     @class_list = Spell::CLASSES
   end
 
@@ -13,4 +8,9 @@ class SpellsController < ApplicationController
     @spell = Spell.find(params[:id])
   end
 
+  private
+
+  def spells_params
+    params.permit(:class_name, :level, :page)
+  end
 end
