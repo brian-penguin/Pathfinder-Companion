@@ -1,6 +1,6 @@
 class Spell < ApplicationRecord
   has_many :spell_levels
-  has_many :classes, through: :spell_levels
+  has_many :pathfinder_classes, through: :spell_levels
 
   SCHOOLS = %w(
     abjuration
@@ -21,10 +21,10 @@ class Spell < ApplicationRecord
   validates :dismissible, inclusion: { in: [true, false] }
   validates :description, presence: true
   validates :spell_requirements, length: { is: 4 }
-  validates :class_requirements, length: { is: 24 }
+  # validates :class_requirements, length: { is: 24 }
 
   validate :validate_spell_requirements
-  validate :validate_class_requirements
+  # validate :validate_class_requirements
 
   def validate_spell_requirements
     self.spell_requirements.values.each do |req_value|

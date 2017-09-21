@@ -1,4 +1,5 @@
 class PathfinderClass < ApplicationRecord
+  has_many :spell_levels
   has_many :spells, through: :spell_levels
 
   CLASSES = %w(

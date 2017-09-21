@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20170921155843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "classes", force: :cascade do |t|
+  create_table "pathfinder_classes", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20170921155843) do
   create_table "spell_levels", force: :cascade do |t|
     t.integer "level", null: false
     t.bigint "spell_id"
-    t.bigint "classes_id"
+    t.bigint "pathfinder_class_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["classes_id"], name: "index_spell_levels_on_classes_id"
+    t.index ["pathfinder_class_id"], name: "index_spell_levels_on_pathfinder_class_id"
     t.index ["spell_id"], name: "index_spell_levels_on_spell_id"
   end
 
@@ -50,6 +50,6 @@ ActiveRecord::Schema.define(version: 20170921155843) do
     t.string "descriptor"
   end
 
-  add_foreign_key "spell_levels", "classes", column: "classes_id"
+  add_foreign_key "spell_levels", "pathfinder_classes"
   add_foreign_key "spell_levels", "spells"
 end
