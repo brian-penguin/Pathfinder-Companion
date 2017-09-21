@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804234854) do
+ActiveRecord::Schema.define(version: 20170921155843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "classes", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spell_levels", force: :cascade do |t|
+    t.integer "level", null: false
+    t.bigint "spell_id"
+    t.bigint "classes_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["classes_id"], name: "index_spell_levels_on_classes_id"
+    t.index ["spell_id"], name: "index_spell_levels_on_spell_id"
+  end
 
   create_table "spells", force: :cascade do |t|
     t.string "name", null: false
@@ -30,9 +46,10 @@ ActiveRecord::Schema.define(version: 20170804234854) do
     t.string "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.jsonb "class_requirements"
     t.jsonb "spell_requirements"
     t.string "descriptor"
   end
 
+  add_foreign_key "spell_levels", "classes", column: "classes_id"
+  add_foreign_key "spell_levels", "spells"
 end

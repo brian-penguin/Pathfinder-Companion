@@ -1,4 +1,7 @@
 class Spell < ApplicationRecord
+  has_many :spell_levels
+  has_many :classes, through: :spell_levels
+
   SCHOOLS = %w(
     abjuration
     conjuration
@@ -9,33 +12,6 @@ class Spell < ApplicationRecord
     necromancy
     transmutation
     universal
-  ).freeze
-
-  CLASSES = %w(
-    alchemist
-    antipaladin
-    bard
-    bloodrager
-    cleric
-    druid
-    hunter
-    inquisitor
-    investigator
-    magus
-    medium
-    mesmerist
-    occultist
-    oracle
-    paladin
-    psychic
-    ranger
-    shaman
-    skald
-    sorcerer
-    spiritualist
-    summoner
-    witch
-    wizard
   ).freeze
 
   validates :name, presence: true
@@ -77,13 +53,13 @@ class Spell < ApplicationRecord
       end
     end
 
-    if display.include?("f")
-      display = display.split("").sort.reverse!
-    else
-      display = display.split("")
-    end
+    
+    display = if display.include?("f")
+                display.split("").sort.reverse!
+              else
+                display.split("")
+              end
 
-    return display.join(", ")
+    display.join(", ")
   end
-
 end
