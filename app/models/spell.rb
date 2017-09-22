@@ -50,6 +50,9 @@ class Spell < ApplicationRecord
   validate :validate_spell_requirements
   validate :validate_class_requirements
 
+  default_scope { order(:name) }
+  paginates_per(50)
+
   def validate_spell_requirements
     self.spell_requirements.values.each do |req_value|
       if ![true, false].include?(req_value)
@@ -68,7 +71,7 @@ class Spell < ApplicationRecord
       end
     end
   end
-  
+
   def list_spell_requirements
     display = ""
     spell_requirements.each do |requirement, value|
@@ -77,13 +80,12 @@ class Spell < ApplicationRecord
       end
     end
 
-    if display.include?("f")
-      display = display.split("").sort.reverse!
-    else
-      display = display.split("")
-    end
+    display = if display.include?("f")
+                display.split("").sort.reverse!
+              else
+                display.split("")
+              end
 
-    return display.join(", ")
+    display.join(", ")
   end
-
 end
