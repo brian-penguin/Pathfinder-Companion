@@ -21,8 +21,7 @@ RSpec.describe "Spell creation", type: :model do
           somatic:  true,
           material: false,
           focus:    false
-        },
-        class_requirements: @class_requirements_template
+        }
     )
     expect(good_spell.save).to eq true
   end
