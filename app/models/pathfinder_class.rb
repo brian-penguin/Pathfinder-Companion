@@ -28,4 +28,7 @@ class PathfinderClass < ApplicationRecord
     witch
     wizard
   ).freeze
+
+  validates :name, inclusion: { in: CLASSES }
+  validates :name, uniqueness: true
 end

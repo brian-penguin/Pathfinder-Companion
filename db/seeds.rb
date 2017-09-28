@@ -20,11 +20,11 @@ def build_spell_requirements(spell_data)
 end
 
 def build_class_requirements(spell_data)
-  PathfinderClass.all.each do |klass|
-    if spell_data[klass.name.to_sym] != 'NULL'
+  PathfinderClass.all.each do |pathfinder_class|
+    if spell_data[pathfinder_class.name.to_sym] != 'NULL'
       SpellLevel.create(
-        level: spell_data[klass.name.to_sym],
-        pathfinder_class: klass,
+        level: spell_data[pathfinder_class.name.to_sym],
+        pathfinder_class: pathfinder_class,
         spell: Spell.last
       )
     end

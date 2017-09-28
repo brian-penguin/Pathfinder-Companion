@@ -26,6 +26,4 @@ RSpec.describe 'spell index can be filtered with spell finder' do
   it 'index can be filtered to show all spells of a class' do
     expect(spell_finder.perform).to match_array([paladin_spell])
   end
-
-  pending 'index can be filtered to show spells of a specific level and class'
 end
