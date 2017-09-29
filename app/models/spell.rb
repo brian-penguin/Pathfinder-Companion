@@ -1,4 +1,7 @@
 class Spell < ApplicationRecord
+  has_many :spell_levels
+  has_many :pathfinder_classes, through: :spell_levels
+
   SCHOOLS = %w(
     abjuration
     conjuration
@@ -11,33 +14,6 @@ class Spell < ApplicationRecord
     universal
   ).freeze
 
-  CLASSES = %w(
-    alchemist
-    antipaladin
-    bard
-    bloodrager
-    cleric
-    druid
-    hunter
-    inquisitor
-    investigator
-    magus
-    medium
-    mesmerist
-    occultist
-    oracle
-    paladin
-    psychic
-    ranger
-    shaman
-    skald
-    sorcerer
-    spiritualist
-    summoner
-    witch
-    wizard
-  ).freeze
-
   validates :name, presence: true
   validates :school, inclusion: { in: SCHOOLS }
   validates :casting_time, presence: true
@@ -45,10 +21,8 @@ class Spell < ApplicationRecord
   validates :dismissible, inclusion: { in: [true, false] }
   validates :description, presence: true
   validates :spell_requirements, length: { is: 4 }
-  validates :class_requirements, length: { is: 24 }
 
   validate :validate_spell_requirements
-  validate :validate_class_requirements
 
   default_scope { order(:name) }
   paginates_per(50)
