@@ -3,5 +3,8 @@ rvm:
  - 2.4.1
 services:
   - postgresql
+addons:
+    postgresql: "9.6"
 before_script:
     - psql -c 'create database pf_companion_test;' -U postgres
+
