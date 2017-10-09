@@ -16,7 +16,8 @@ class SpellFinder
     if class_name.present? && level.present?
       # need to join spell_levels to spells & class
     elsif class_name.present?
-      PathfinderClass.where(name: class_name).first.spells.order(:name)
+      PathfinderClass.find_by(name: class_name).spells.order(:name)
+      # PathfinderClass.where(name: class_name).first.spells.order(:name)
     else
       Spell.all.page(page)
     end
