@@ -3,6 +3,8 @@ rvm:
  - 2.4.1
 services:
   - postgresql
+before_script:
+    - psql -c 'create database travis_ci_test;' -U postgres
 test:
   adapter: postgresql
-  database: pf_companion_test 
+  database: pf_companion_test
