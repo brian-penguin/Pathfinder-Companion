@@ -1,6 +1,10 @@
 language: ruby
 rvm:
  - 2.4.1
+cache:
+  bundler: true
+  # Test Caching is good.
+  # See: https://docs.travis-ci.com/user/caching/
 services:
   - postgresql
 addons:
