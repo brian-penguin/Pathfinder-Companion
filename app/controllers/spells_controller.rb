@@ -1,7 +1,7 @@
 class SpellsController < ApplicationController
   def index
     @spells = SpellFinder.perform(spells_params)
-    @class_list = Spell::CLASSES
+    @class_list = PathfinderClass::CLASSES
   end
 
   def show
