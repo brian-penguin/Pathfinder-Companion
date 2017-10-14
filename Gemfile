@@ -9,15 +9,17 @@ end
 
 gem 'rails', '~> 5.1.2'
 
+# gem 'redis', '~> 3.0'
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
-gem 'redis', '~> 3.0'
+gem 'react_on_rails', '9.0.0'
 gem 'sass-rails', '~> 5.0'
 gem 'smarter_csv', '~> 1.1.4'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'webpacker', '~> 3.0'
 
 group :development, :test do
   gem 'awesome_print'
