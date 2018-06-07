@@ -17,7 +17,8 @@ Spell.delete_all
 PathfinderClass.delete_all
 SpellLevel.delete_all
 
-csv_spells = SmarterCSV.process('spell_list-01JUL2017.csv')
+# csv_spells = SmarterCSV.process('spell_list-01JUL2017.csv')
+csv_spells = SmarterCSV.process('spell_list_May2018.csv')
 
 ActiveRecord::Base.transaction do
 
