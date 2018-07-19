@@ -22,3 +22,4 @@
 *.sw*
 .projectile
 tags
+.env
